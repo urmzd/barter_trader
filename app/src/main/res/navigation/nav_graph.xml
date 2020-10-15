@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/login_fragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -24,5 +24,11 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="ca.dal.bartertrader.LogInFragment"
+
+        tools:layout="@layout/fragment_in_log">
     </fragment>
 </navigation>
