@@ -53,4 +53,13 @@ public class LogInFragmentAndroidTest {
         onView(withText("Invalid email or password"))
                 .check(matches(isDisplayed()));
     }
+
+    @Test
+    public void resetPassword() {
+        onView(withText("Reset Password"))
+                .perform(click());
+
+        onView(withId(R.id.resetPasswordFragment))
+                .check(matches(isDisplayed()));
+    }
 }
