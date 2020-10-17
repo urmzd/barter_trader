@@ -30,15 +30,26 @@
         android:name="ca.dal.bartertrader.LogInFragment"
         tools:layout="@layout/fragment_in_log">
         <action
-            android:id="@+id/action_LogInFragment_to_ResetPasswordFragment"
+            android:id="@+id/action_LogInFragment_to_resetPasswordFragment"
             app:destination="@id/ResetPasswordFragment" />
+        <action
+            android:id="@+id/action_LogInFragment_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/ResetPasswordFragment"
         android:name="ca.dal.bartertrader.PasswordResetFragment_fake"
         tools:layout="@layout/fragment_passwordreset">
         <action
-            android:id="@+id/action_ResetPasswordFragment_to_LogInFragment"
+            android:id="@+id/action_resetPasswordFragment_to_LogInFragment"
+            app:destination="@id/LogInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="ca.dal.bartertrader.SignUpFragment_fake"
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/action_SignUpFragment_to_LogInFragment"
             app:destination="@id/LogInFragment" />
     </fragment>
 </navigation>

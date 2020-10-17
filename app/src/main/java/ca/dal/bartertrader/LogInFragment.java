@@ -78,9 +78,16 @@ public class LogInFragment extends Fragment {
         view.findViewById(R.id.resetPassBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Fragment doesn't change when button is pressed");
                 Navigation.findNavController(getView())
                         .navigate(LogInFragmentDirections.actionLogInFragmentToResetPasswordFragment());
+            }
+        });
+
+        view.findViewById(R.id.signUpBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView())
+                        .navigate(LogInFragmentDirections.actionLogInFragmentToSignUpFragment());
             }
         });
 
