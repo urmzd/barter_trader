@@ -10,4 +10,21 @@
         android:name="ca.dal.bartertrader.SplashFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/ReceiverFragment"
+        android:name="ca.dal.bartertrader.receiver.ReceiverFragment"
+        android:label="ReceiverFragment"
+        tools:layout="@layout/receiver_fragment">
+
+        <!--These may need to be changed?-->
+        <action
+            android:id="@+id/action_LoginFragment_to_ReceiverFragment"
+            app:destination="@id/ReceiverFragment" />
+
+        <action
+            android:id="@+id/action_ProviderFragment_to_ReceiverFragment"
+            app:destination="@id/ReceiverFragment" />
+
+    </fragment>
 </navigation>

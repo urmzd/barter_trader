@@ -8,11 +8,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ReceiverViewModelFactory implements ViewModelProvider.Factory {
 
-    private FirebaseFirestore firestoreRef;
+    /*private UserFirebaseFirestoreRepository repoRef;*/;
 
-    public ReceiverViewModelFactory(FirebaseFirestore repoRef)
+    public ReceiverViewModelFactory(/*UserFirebaseFirestoreRepository repoRef*/)
     {
-        this.firestoreRef = repoRef;
+        //this.firestoreRef = repoRef;
     }
 
     @NonNull
@@ -20,7 +20,7 @@ public class ReceiverViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if(modelClass.isAssignableFrom(ReceiverViewModel.class))
         {
-            return (T) new ReceiverViewModel(firestoreRef);
+            return (T) new ReceiverViewModel(/*repoRef*/);
         }
         throw new IllegalArgumentException("ViewModel Not Found.");
     }

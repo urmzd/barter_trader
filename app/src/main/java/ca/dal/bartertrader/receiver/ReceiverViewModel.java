@@ -30,8 +30,6 @@ public class ReceiverViewModel extends ViewModel {
     //private UserFirebaseFirestoreRepository mUserRepo;
     //for now I"m using place holders to test everything is connected
 
-    private FirebaseFirestore db;
-
     private static String ITEM_TAG = "item";
     //private MutableLiveData</*Item to be passed*/> mItemMutableLiveData;
 
@@ -42,7 +40,7 @@ public class ReceiverViewModel extends ViewModel {
         //{
         //    return;
         //}
-        //mUserRepo.UserFirebaseFirestoreRepository.getInstance();
+        //mUserRepo = UserFirebaseFirestoreRepository.getInstance();
         //mItemMutableLiveData = mUserRepo.getItems();
 
         //TODO: remove the below placeholder

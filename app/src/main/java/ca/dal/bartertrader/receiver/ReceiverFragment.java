@@ -46,7 +46,7 @@ public class ReceiverFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         //TODO: remove the placeholder for repo class below, only here for testing
-        mViewModel = new ViewModelProvider(requireActivity(), new ReceiverViewModelFactory(FirebaseFirestore.getInstance()))
+        mViewModel = new ViewModelProvider(requireActivity(), new ReceiverViewModelFactory(/*repository ref*/))
                 .get(ReceiverViewModel.class);
     }
 }

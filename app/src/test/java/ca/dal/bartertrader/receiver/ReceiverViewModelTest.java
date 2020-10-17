@@ -31,12 +31,6 @@ public class ReceiverViewModelTest {
     static String value2;
     static String value3;
 
-    @Mock
-    FirebaseFirestore mockFirestore;
-
-    @Mock
-    MainActivity mainActivity;
-
     private ReceiverViewModel mViewModel;
 
     @Before
