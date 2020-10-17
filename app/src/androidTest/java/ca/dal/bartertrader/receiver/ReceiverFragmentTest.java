@@ -1,6 +1,7 @@
 package ca.dal.bartertrader.receiver;
 
 import androidx.fragment.app.testing.FragmentScenario;
+import androidx.lifecycle.Lifecycle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.testing.TestNavHostController;
@@ -28,9 +29,11 @@ import static org.junit.Assert.*;
 
 public class ReceiverFragmentTest {
     TestNavHostController navController;
+    FragmentScenario<ReceiverFragment> receiverScenario;
 
     @Before
     public void setUp() throws Exception {
+        receiverScenario = FragmentScenario.launchInContainer(ReceiverFragment.class);
         navController = new TestNavHostController(
                 ApplicationProvider.getApplicationContext());
         navController.setGraph(R.navigation.nav_graph);
@@ -40,9 +43,6 @@ public class ReceiverFragmentTest {
     @Test
     public void testSwitchRoles()
     {
-        // Create a graphical FragmentScenario for the TitleScreen
-        FragmentScenario<ReceiverFragment> receiverScenario =
-                FragmentScenario.launchInContainer(ReceiverFragment.class);
 
         // Set the NavController property on the fragment
         receiverScenario.onFragment(fragment ->
