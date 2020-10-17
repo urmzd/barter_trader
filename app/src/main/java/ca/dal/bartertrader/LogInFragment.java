@@ -11,6 +11,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -71,6 +73,15 @@ public class LogInFragment extends Fragment {
         passwordField = (EditText) getView().findViewById(R.id.passwordField);
 
         //FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        view.findViewById(R.id.resetPassBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Fragment doesn't change when button is pressed");
+               Navigation.findNavController(getView())
+                       .navigate(LogInFragmentDirections.actionLoginFragmentToResetPasswordFragment());
+            }
+        });
 
         view.findViewById(R.id.logInBtn).setOnClickListener(new View.OnClickListener() {
             @Override
