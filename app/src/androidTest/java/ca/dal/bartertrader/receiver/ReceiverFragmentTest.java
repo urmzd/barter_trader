@@ -54,6 +54,7 @@ public class ReceiverFragmentTest {
         onView(withId(R.id.switchRolesButton))
                 .perform(click());
 
+        //TODO: replace this with real Provider fragment
         assertEquals(navController.getCurrentDestination().getId(),R.id.DummyProviderFragment);
     }
 

@@ -1,5 +1,7 @@
 package ca.dal.bartertrader.receiver;
 
+import androidx.annotation.IdRes;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import ca.dal.bartertrader.R;
 public class ReceiverFragment extends Fragment {
 
     private ReceiverViewModel mViewModel;
+    private boolean isCurrentLayoutLoggedIn = false;
 
     public static ReceiverFragment newInstance() {
         return new ReceiverFragment();
@@ -32,10 +35,13 @@ public class ReceiverFragment extends Fragment {
         boolean isLoggedIn = true;
         if(isLoggedIn)
         {
+            isCurrentLayoutLoggedIn = true;
             return inflater.inflate(R.layout.receiver_logged_in_fragment,container,false);
         }
         else
         {
+            //TODO: refactor this and remove the boolean
+            isCurrentLayoutLoggedIn = false;
             return inflater.inflate(R.layout.receiver_not_logged_in_fragment,container,false);
         }
     }
@@ -43,12 +49,29 @@ public class ReceiverFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //if on the logged in pa
 
+        if(isCurrentLayoutLoggedIn)
+        {
+            SwitchRoles(view);
+        }
     }
 
+    public void SwitchRoles(View view)
+    {
+        Button switchRolesButton = (Button)view.findViewById(R.id.switchRolesButton);
+        switchRolesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ReceiverFragment.this)
+                        .navigate(R.id.action_ReceiverFragment_to_ProviderFragment);
+            }
+        });
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         //TODO: remove the placeholder for repo class below, only here for testing
         mViewModel = new ViewModelProvider(requireActivity(), new ReceiverViewModelFactory(/*repository ref*/))

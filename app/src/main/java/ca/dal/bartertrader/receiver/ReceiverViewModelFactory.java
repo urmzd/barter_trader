@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 public class ReceiverViewModelFactory implements ViewModelProvider.Factory {
 
     /*private UserFirebaseFirestoreRepository repoRef;*/;

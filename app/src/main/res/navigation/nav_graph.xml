@@ -12,19 +12,25 @@
         tools:layout="@layout/fragment_splash" />
 
     <fragment
+        android:id="@+id/DummyProviderFragment"
+        android:name="ca.dal.bartertrader.provider.DummyProviderFragment"
+        android:label="fragment_blank" />
+
+    <!--These may need to be refactored once its all in-->
+    <fragment
         android:id="@+id/ReceiverFragment"
         android:name="ca.dal.bartertrader.receiver.ReceiverFragment"
         android:label="ReceiverFragment"
         tools:layout="@layout/receiver_logged_in_fragment">
 
-        <!--These may need to be changed?-->
+
         <action
             android:id="@+id/action_LoginPage_to_ReceiverLoggedIn"
             app:destination="@id/ReceiverFragment" />
 
         <action
-            android:id="@+id/action_ProviderFragment_to_ReceiverFragment"
-            app:destination="@id/ReceiverFragment" />
+            android:id="@+id/action_ReceiverFragment_to_ProviderFragment"
+            app:destination="@id/DummyProviderFragment" />
 
     </fragment>
 </navigation>
