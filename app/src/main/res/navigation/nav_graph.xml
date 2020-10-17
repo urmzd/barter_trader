@@ -19,7 +19,7 @@
 
         <!--These may need to be changed?-->
         <action
-            android:id="@+id/action_ReceiverLoggedOut_ReceiverLoggedIn"
+            android:id="@+id/action_LoginPage_to_ReceiverLoggedIn"
             app:destination="@id/ReceiverFragment" />
 
         <action

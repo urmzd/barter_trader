@@ -28,7 +28,7 @@ public class ReceiverFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        //set conditions here that you're logged in and in receiver role
+        //TODO: set conditions here that you're logged in and in receiver role
         boolean isLoggedIn = true;
         if(isLoggedIn)
         {
