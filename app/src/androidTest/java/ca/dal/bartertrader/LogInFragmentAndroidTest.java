@@ -59,7 +59,16 @@ public class LogInFragmentAndroidTest {
         onView(withText("Reset Password"))
                 .perform(click());
 
-        onView(withId(R.id.resetPasswordFragment))
+        onView(withId(R.id.resetPasswordLayout))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void signUp() {
+        onView(withText("Sign Up"))
+                .perform(click());
+
+        onView(withId(R.id.signUpLayout))
                 .check(matches(isDisplayed()));
     }
 }
