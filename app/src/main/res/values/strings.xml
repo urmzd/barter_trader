@@ -2,4 +2,8 @@
     <string name="app_name">BarterTrader</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="receiver_plain_text">Receiver</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="switch_roles">Switch Roles</string>
 </resources>

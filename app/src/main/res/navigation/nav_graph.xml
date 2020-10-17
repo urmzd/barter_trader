@@ -15,11 +15,11 @@
         android:id="@+id/ReceiverFragment"
         android:name="ca.dal.bartertrader.receiver.ReceiverFragment"
         android:label="ReceiverFragment"
-        tools:layout="@layout/receiver_fragment">
+        tools:layout="@layout/receiver_logged_in_fragment">
 
         <!--These may need to be changed?-->
         <action
-            android:id="@+id/action_LoginFragment_to_ReceiverFragment"
+            android:id="@+id/action_ReceiverLoggedOut_ReceiverLoggedIn"
             app:destination="@id/ReceiverFragment" />
 
         <action

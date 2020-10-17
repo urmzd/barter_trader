@@ -7,16 +7,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import android.widget.Button;
 
 import ca.dal.bartertrader.R;
 
@@ -32,7 +28,16 @@ public class ReceiverFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.receiver_fragment, container, false);
+        //set conditions here that you're logged in and in receiver role
+        boolean isLoggedIn = true;
+        if(isLoggedIn)
+        {
+            return inflater.inflate(R.layout.receiver_logged_in_fragment,container,false);
+        }
+        else
+        {
+            return inflater.inflate(R.layout.receiver_not_logged_in_fragment,container,false);
+        }
     }
 
     @Override

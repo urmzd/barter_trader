@@ -1,2 +1,6 @@
 <resources>
+    <dimen name="receiver_plain_text_side">173dp</dimen>
+    <dimen name="receiver_plain_text_top">302dp</dimen>
+    <dimen name="receiver_switch_roles_bottom">338dp</dimen>
+    <dimen name="receiver_switch_roles_side">157dp</dimen>
 </resources>
