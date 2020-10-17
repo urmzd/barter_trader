@@ -40,8 +40,6 @@ public class ReceiverFragmentTest {
     @Test
     public void testSwitchRoles()
     {
-
-
         // Create a graphical FragmentScenario for the TitleScreen
         FragmentScenario<ReceiverFragment> receiverScenario =
                 FragmentScenario.launchInContainer(ReceiverFragment.class);
