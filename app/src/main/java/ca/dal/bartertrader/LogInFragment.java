@@ -42,6 +42,7 @@ public class LogInFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_in_log, container, false);
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -78,8 +79,8 @@ public class LogInFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Fragment doesn't change when button is pressed");
-               Navigation.findNavController(getView())
-                       .navigate(LogInFragmentDirections.actionLoginFragmentToResetPasswordFragment());
+                Navigation.findNavController(getView())
+                        .navigate(LogInFragmentDirections.actionLogInFragmentToResetPasswordFragment());
             }
         });
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/login_fragment">
+    app:startDestination="@id/LogInFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -26,19 +26,19 @@
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
-        android:id="@+id/login_fragment"
+        android:id="@+id/LogInFragment"
         android:name="ca.dal.bartertrader.LogInFragment"
         tools:layout="@layout/fragment_in_log">
         <action
-            android:id="@+id/action_login_fragment_to_resetPasswordFragment"
-            app:destination="@id/resetPasswordFragment" />
+            android:id="@+id/action_LogInFragment_to_ResetPasswordFragment"
+            app:destination="@id/ResetPasswordFragment" />
     </fragment>
     <fragment
-        android:id="@+id/resetPasswordFragment"
-        android:name="ca.dal.bartertrader.passwordResetFragment_fake"
-        tools:layout="@layout/fragment_password_reset">
+        android:id="@+id/ResetPasswordFragment"
+        android:name="ca.dal.bartertrader.PasswordResetFragment_fake"
+        tools:layout="@layout/fragment_passwordreset">
         <action
-            android:id="@+id/action_resetPasswordFragment_to_login_fragment"
-            app:destination="@id/login_fragment" />
+            android:id="@+id/action_ResetPasswordFragment_to_LogInFragment"
+            app:destination="@id/LogInFragment" />
     </fragment>
 </navigation>

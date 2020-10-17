@@ -13,12 +13,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import androidx.annotation.NonNull;
 
-public class passwordResetFragment_fake extends Fragment {
+public class PasswordResetFragment_fake extends Fragment {
     TextView message;
 
     @Override
@@ -27,7 +28,7 @@ public class passwordResetFragment_fake extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_in_log, container, false);
+        return inflater.inflate(R.layout.fragment_passwordreset, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -35,11 +36,11 @@ public class passwordResetFragment_fake extends Fragment {
 
         message = (TextView) getView().findViewById(R.id.passwordResetMessage);
 
-        view.findViewById(R.id.logInBtn).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.backToLogInBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(passwordResetFragment_fake.this)
-                        .navigate(R.id.action_resetPasswordFragment_to_login_fragment);
+                Navigation.findNavController(getView())
+                        .navigate(PasswordResetFragment_fakeDirections.actionResetPasswordFragmentToLogInFragment());
             }
         });
     }
