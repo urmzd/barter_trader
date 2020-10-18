@@ -10,4 +10,24 @@
         android:name="ca.dal.bartertrader.SplashFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/accountRecoveryConfirmationFragment"
+        android:name="ca.dal.bartertrader.account_recovery.AccountRecoveryFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/account_recovery_email_sent" />
+
+    <fragment
+        android:id="@+id/accountRecoveryFragment"
+        android:name="ca.dal.bartertrader.account_recovery.AccountRecoveryFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/account_recovery_input_fragment" />
+
+    <!--TODO:Replace splash fragment with login fragment below-->
+    <action
+        android:id="@+id/action_AccountRecoveryFragment_to_LoginFragment"
+        app:destination="@id/splashFragment" />
+
+
+
 </navigation>
