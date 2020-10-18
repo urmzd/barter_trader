@@ -73,8 +73,6 @@ public class AccountRecoveryFragmentTest {
                 .perform(typeText(EMAIL_VALID), closeSoftKeyboard());
         onView(withId(R.id.account_recovery_send_email_button))
                 .perform(click());
-        onView(withId(R.id.account_recovery_text_email))
-                .check(matches(hasErrorText("Error--invalid email format"/*getString(R.string.error_email_invalid))*/)));
 
         //TODO: replace this with login fragment
         assertEquals(navController.getCurrentDestination().getId(),R.id.splashFragment);
