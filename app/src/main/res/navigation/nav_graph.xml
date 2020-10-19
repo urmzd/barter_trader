@@ -10,4 +10,18 @@
         android:name="ca.dal.bartertrader.SplashFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/providerFragment"
+        android:name="ca.dal.bartertrader.ProviderFragment"
+        android:label="fragment_provider"
+        tools:layout="@layout/fragment_provider" >
+        <action
+            android:id="@+id/action_providerFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+
+
+
+
 </navigation>
