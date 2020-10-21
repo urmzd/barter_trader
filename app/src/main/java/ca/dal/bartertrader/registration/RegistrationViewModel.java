@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import android.util.Patterns;
 
 import com.google.android.material.textfield.TextInputLayout;
+
+import ca.dal.bartertrader.SingleEvent;
 //private userRepository;
 
 
@@ -27,7 +29,7 @@ public class RegistrationViewModel extends ViewModel {
         }
         return !isEmailValid(email);
     });
-
+    private final MutableLiveData<SingleEvent<Boolean>> sendRegistrationEmailEvent = new MutableLiveData<>();
 
     public void registerUser( String email, String username, String password ) {
         boolean validRegistration = validateRegistration(email, username, password);
@@ -108,6 +110,10 @@ public class RegistrationViewModel extends ViewModel {
     }
 
     public LiveData<Boolean> getShowEmailError() { return this.showEmailError; }
+
+    public LiveData<SingleEvent<Boolean>> getSendRegistrationEmailEvent() {
+        return this.sendRegistrationEmailEvent;
+    }
 
     @BindingAdapter("email")
     public void setEmail(TextInputLayout view, String currentEmail)

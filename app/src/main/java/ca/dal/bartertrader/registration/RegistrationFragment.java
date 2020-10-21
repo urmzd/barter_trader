@@ -40,7 +40,7 @@ private FragmentRegistrationBinding binding;
         binding.setViewModel(model);
 
         model.getShowEmailError().observe(getViewLifecycleOwner(), emailObserver() );
-
+        model.getSendRegistrationEmailEvent().observe(getViewLifecycleOwner(), emailRegistrationResponseObserver());
     }
 
     public final Observer<Boolean> emailObserver() {
