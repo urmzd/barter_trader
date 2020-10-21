@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".registration.RegistrationFragment">
 
+    <data>
+        <variable
+            android:name="viewModel"
+            android:type="ca.dal.bartertrader.RegistrationViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -54,7 +60,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.email}"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,5 +1,6 @@
 package ca.dal.bartertrader.registration;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import android.util.Patterns;
 //private userRepository;
@@ -10,6 +11,9 @@ public class RegistrationViewModel extends ViewModel {
     RegistrationViewModel(/**UserRepository userRepository**/) {
         /**this.userRepository = userRepository;**/
     }
+
+    private final MutableLiveData<String> email = new MutableLiveData<>();
+
 
     public void registerUser( String email, String username, String password ) {
         boolean validRegistration = validateRegistration(email, username, password);
