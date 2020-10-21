@@ -10,6 +10,8 @@
     <string name="title_confirmed_password_placeholder">Confirmed Password</string>
     <string name="title_provider_label">Provider</string>
     <string name="action_register">Register!</string>
-    <string name="registration_email_sent"> A registration request to your email has been sent</string>
+    <string name="registration_email_sent"> A registration request to has been sent</string>
+    <string name="registration_account_created"> Account has been created</string>
+    <string name="registration_account_failure"> This email could not be registered to an account, it may already exist.</string>
 
 </resources>

@@ -43,6 +43,7 @@ private FragmentRegistrationBinding binding;
         model.getShowPasswordError().observe(getViewLifecycleOwner(), passwordObserver() );
         model.getShowConfirmationPasswordError().observe(getViewLifecycleOwner(), confirmationPasswordObserver() );
         model.getSendRegistrationEmailEvent().observe(getViewLifecycleOwner(), emailRegistrationResponseObserver());
+        model.getAccountRegistrationEvent().observe(getViewLifecycleOwner(), accountRegistrationResponseObserver());
     }
 
     public final Observer<Boolean> emailObserver() {
@@ -85,6 +86,23 @@ private FragmentRegistrationBinding binding;
         return emailRegistrationEvent -> {
             Toast emailRegistrationNotification = Toast.makeText(getContext(), getString(R.string.registration_email_sent), Toast.LENGTH_SHORT);
             emailRegistrationNotification.show();
+        };
+    }
+
+    public final Observer<SingleEvent<Boolean>> accountRegistrationResponseObserver() {
+        return accountRegistrationEvent -> {
+            if (accountRegistrationEvent.peek() == true)
+            {
+                Toast accountRegistrationNotification = Toast.makeText(getContext(), getString(R.string.registration_account_created), Toast.LENGTH_SHORT);
+                accountRegistrationNotification.show();
+            }
+            else
+            {
+                TextInputLayout registrationEmailInput = binding.email;
+                registrationEmailInput.setErrorEnabled(true);
+                registrationEmailInput.setError(getString(R.string.registration_account_failure));
+
+            }
         };
     }
 }

@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 import ca.dal.bartertrader.MainActivity;
 import ca.dal.bartertrader.SingleEvent;
@@ -59,13 +62,10 @@ public class RegistrationViewModel extends ViewModel {
     });
 
     private final MutableLiveData<SingleEvent<Boolean>> sendRegistrationEmailEvent = new MutableLiveData<>();
+    private final MutableLiveData<SingleEvent<Boolean>> accountRegistrationEvent = new MutableLiveData<>();
 
     private final LiveData<Boolean> enabledRegistration =
             Transformations.map(email, this::isEmailValid);
-
-    public void sendConfirmationEmail() {
-        /**TODO: send email confirmation after a valid registration **/
-    };
 
     private boolean validateRegistration(String email, String username, String password) {
         boolean validRegistration = isEmailValid(email)         &&
@@ -140,6 +140,10 @@ public class RegistrationViewModel extends ViewModel {
         return this.sendRegistrationEmailEvent;
     }
 
+    public MutableLiveData<SingleEvent<Boolean>> getAccountRegistrationEvent() {
+        return accountRegistrationEvent;
+    }
+
     @BindingAdapter("email")
     public void setEmail(TextInputLayout view, String currentEmail)
     {
@@ -188,7 +192,7 @@ public class RegistrationViewModel extends ViewModel {
                         }
                         else {
                             Log.d("createNewAccount:","Failure");
-                            //sendRegistrationEmailEvent.setValue(new SingleEvent<>(false));
+                            accountRegistrationEvent.setValue(new SingleEvent<>(false));
                         }
                     }
                 });
@@ -197,6 +201,23 @@ public class RegistrationViewModel extends ViewModel {
 
     private void createDataCollection()
     {
-
+        HashMap<String, Boolean> user = new HashMap<>();
+        user.put("provider", getRoleIsProvider().getValue());
+        FirebaseFirestore.getInstance()
+                .collection("users")
+                .document("111")
+                .set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d("createFirestoreData:","Success");
+                    accountRegistrationEvent.setValue(new SingleEvent<>(true));
+                }
+                else {
+                    Log.d("createFirestoreData:","Failure");
+                    accountRegistrationEvent.setValue(new SingleEvent<>(false));
+                }
+            }
+        });
     }
 }
