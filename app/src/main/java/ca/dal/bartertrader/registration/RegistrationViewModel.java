@@ -91,7 +91,7 @@ public class RegistrationViewModel extends ViewModel {
 
     private boolean isConfirmationPasswordValid(String confirmationPassword)
     {
-        return !confirmationPassword.isEmpty();
+        return !confirmationPassword.isEmpty() && getPassword().getValue().equals(confirmationPassword);
     }
     // Checks firebase to see if this email already belongs to a user.
     private boolean isEmailRegistered(String email) {
