@@ -13,5 +13,11 @@
     <string name="registration_email_sent"> A registration request to has been sent</string>
     <string name="registration_account_created"> Account has been created</string>
     <string name="registration_account_failure"> This email could not be registered to an account, it may already exist.</string>
-
+    <string name="action_back">BACK</string>
+    <string name="placeholder_email">Email</string>
+    <string name="action_register">Send Reset Email!</string>
+    <string name="message_reset_password">Enter the email associated to your account. We will send you a link to reset your password!</string>
+    <string name="title_fragment_blank">Splash Fragment</string>
+    <string name="title_fragment_password_reset">Password Reset</string>
+    <string name="error_email">Invalid email format. Ensure it follows the local-part@domain format.</string>
 </resources>
