@@ -17,7 +17,7 @@ import ca.dal.bartertrader.SingleEvent;
 
 public class RegistrationViewModel extends ViewModel {
 
-    RegistrationViewModel(/**UserRepository userRepository**/) {
+    public RegistrationViewModel(/**UserRepository userRepository**/) {
         /**this.userRepository = userRepository;**/
     }
 
@@ -119,5 +119,9 @@ public class RegistrationViewModel extends ViewModel {
     public void setEmail(TextInputLayout view, String currentEmail)
     {
         this.email.setValue(currentEmail);
+    }
+
+    public void sendRegistrationEmailEvent() {
+        sendRegistrationEmailEvent.setValue(new SingleEvent<>(true));
     }
 }
