@@ -49,24 +49,14 @@ public class LogInFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         logInModel = new ViewModelProvider(this, new LogInViewModelFactory()).get(LogInViewModel.class);
-        logInModel.getResult().observe(getViewLifecycleOwner(), new Observer<LogInResult>() {
-            @Override
-            public void onChanged(LogInResult logInResult) {
-                if (logInResult == null) {
-                    return;
-                }
-                if (logInResult.getError() != null) {
-                    logInFailure(logInResult.getError());
-                }
-                if (logInResult.getSuccess()) {
-                    logInSuccess();
-                }
+        logInModel.getUser().observe(getViewLifecycleOwner(), user -> {
+            if (user != null) {
+                Navigation.findNavController(getView())
+                         .navigate(LogInFragmentDirections.actionLogInFragmentToSignUpFragment());
+            }
 
-                else {
-                    message.setTitle("Failure");
-                    message.setMessage("Invalid email or password");
-                }
-                message.show();
+            else {
+               logInFailure();
             }
         });
 
@@ -97,7 +87,16 @@ public class LogInFragment extends Fragment {
                 email = emailField.getText().toString();
                 password = passwordField.getText().toString();
 
-                logInModel.task(mAuth, email, password);
+                if (!email.isEmpty() && !password.isEmpty()) {
+                    logInModel.setEmail(email);
+                    logInModel.setPassword(password);
+
+                    logInModel.login();
+                }
+
+                else {
+                    logInFailure();
+                }
 
                 /*mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -129,10 +128,10 @@ public class LogInFragment extends Fragment {
         message.show();
     }
 
-    private void logInFailure(String errorMessage) {
+    private void logInFailure() {
         message = new AlertDialog.Builder(getContext()).create();
         message.setTitle("Error");
-        message.setMessage("Invalid user name or password");
+        message.setMessage("Invalid email or password");
         message.show();
     }
 }

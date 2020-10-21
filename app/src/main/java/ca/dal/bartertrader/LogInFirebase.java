@@ -22,17 +22,17 @@ public class LogInFirebase {
     public boolean task(final FirebaseAuth mAuth, String email, String password) {
         LoggedInUser fake = new LoggedInUser("nicholasmcphee45@gmail.com", "a4330317");
         boolean emailValid = emailValidation(email);
-        if (emailValid && email.equals(fake.getEmail()) && password.equals(fake.getPassword())) {
-            success = true;
-            logInResult = new LogInResult(success);
-        }
-
-        else {
-            success = false;
-        }
-
-        return success;
-        /*mAuth.signInWithEmailAndPassword(email, password)
+//        if (emailValid && email.equals(fake.getEmail()) && password.equals(fake.getPassword())) {
+//            success = true;
+//            logInResult = new LogInResult(success);
+//        }
+//
+//        else {
+//            success = false;
+//        }
+//
+//        return success;
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -52,7 +52,7 @@ public class LogInFirebase {
                         }
                     }
                 });
-        return success; */
+        return success;
     }
 
     public static boolean emailValidation(String email) {
