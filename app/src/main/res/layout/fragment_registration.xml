@@ -117,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/material_input_margin"
-            android:text="@string/action_register"
+            android:text="@string/action_register_email"
             android:enabled="@{viewModel.enabledRegistration}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

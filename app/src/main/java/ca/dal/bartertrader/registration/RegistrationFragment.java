@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import ca.dal.bartertrader.LogInFragmentDirections;
 import ca.dal.bartertrader.R;
 import ca.dal.bartertrader.SingleEvent;
 import ca.dal.bartertrader.databinding.FragmentRegistrationBinding;
@@ -95,6 +97,8 @@ private FragmentRegistrationBinding binding;
             {
                 Toast accountRegistrationNotification = Toast.makeText(getContext(), getString(R.string.registration_account_created), Toast.LENGTH_SHORT);
                 accountRegistrationNotification.show();
+                Navigation.findNavController(getView())
+                        .navigate(RegistrationFragmentDirections.actionRegistrationFragmentToLogInFragment());
             }
             else
             {
