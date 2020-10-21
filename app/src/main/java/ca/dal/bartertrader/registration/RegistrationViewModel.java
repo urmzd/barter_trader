@@ -8,6 +8,7 @@ import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -177,12 +178,25 @@ public class RegistrationViewModel extends ViewModel {
 
     public void sendRegistrationEmailEvent() {
         firebaseAuth.createUserWithEmailAndPassword(this.getEmail().getValue(), this.getPassword().getValue())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
+                        if (task.isSuccessful()) {
+                            Log.d("createNewAccount:","Success");
+                            sendRegistrationEmailEvent.setValue(new SingleEvent<>(true));
+                            createDataCollection();
+                        }
+                        else {
+                            Log.d("createNewAccount:","Failure");
+                            //sendRegistrationEmailEvent.setValue(new SingleEvent<>(false));
+                        }
                     }
                 });
-        sendRegistrationEmailEvent.setValue(new SingleEvent<>(true));
+
+    }
+
+    private void createDataCollection()
+    {
+
     }
 }
