@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-public class ProviderFragment extends Fragment {
+public class ReceiverFragment extends Fragment {
     private SwitchRolesViewModel switchRolesViewModel;
     private TextView welcomeText;
 
@@ -22,7 +22,7 @@ public class ProviderFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_provider, container, false);
+        return inflater.inflate(R.layout.fragment_receiver, container, false);
     }
 
     @Override
@@ -35,22 +35,22 @@ public class ProviderFragment extends Fragment {
 
 
         switchRoleButton.setOnClickListener(v -> {
-            Toast.makeText(getActivity(), "Switching Role to Receiver",
-                    Toast.LENGTH_SHORT).show();
-            switchRolesViewModel.switchRoles();
+                Toast.makeText(getActivity(), "Switching Role to Provider",
+                        Toast.LENGTH_SHORT).show();
+                switchRolesViewModel.switchRoles();
         });
 
         switchRolesViewModel.getAuthUser().observe(getViewLifecycleOwner(), authUser ->
-            welcomeText.setText(authUser.getDisplayName())
+                welcomeText.setText(authUser.getDisplayName())
         );
 
         switchRolesViewModel.getFirestoreUser().observe(getViewLifecycleOwner(), firestoreUser -> {
-            if (!firestoreUser.getProvider()) {
+            if (firestoreUser.provider) {
                 Navigation.findNavController(getView())
-                        .navigate(ProviderFragmentDirections.actionProviderFragmentToReceiverFragment());
+                        .navigate(ReceiverFragmentDirections.actionReceiverFragmentToProviderFragment());
             }
-        });
 
+        });
     }
 }
 
