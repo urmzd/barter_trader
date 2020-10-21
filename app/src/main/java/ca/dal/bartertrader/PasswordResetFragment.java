@@ -61,7 +61,7 @@ public class PasswordResetFragment extends Fragment {
                 }
 
                 if (event.first == Actions.NAVIGATION) {
-                    Navigation.findNavController(getView()).navigate(PasswordResetFragmentDirections.actionPasswordResetFragmentToSplashFragment());
+                    Navigation.findNavController(getView()).navigate(PasswordResetFragmentDirections.actionPasswordResetFragmentToLogInFragment());
                 }
             }
         });

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/PasswordResetFragment">
+    app:startDestination="@id/LogInFragment">
 
     <fragment
         android:id="@+id/SplashFragment"
@@ -17,7 +17,15 @@
         android:label="@string/title_fragment_password_reset"
         tools:layout="@layout/fragment_password_reset">
         <action
-            android:id="@+id/action_PasswordResetFragment_to_SplashFragment"
-            app:destination="@id/SplashFragment" />
+            android:id="@+id/action_PasswordResetFragment_to_LogInFragment"
+            app:destination="@id/LogInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LogInFragment"
+        android:name="ca.dal.bartertrader.LogInFragment"
+        tools:layout="@layout/fragment_in_log">
+        <action
+            android:id="@+id/action_LogInFragment_to_PasswordResetFragment"
+            app:destination="@id/PasswordResetFragment" />
     </fragment>
 </navigation>
