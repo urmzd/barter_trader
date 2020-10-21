@@ -40,6 +40,8 @@ private FragmentRegistrationBinding binding;
         binding.setViewModel(model);
 
         model.getShowEmailError().observe(getViewLifecycleOwner(), emailObserver() );
+        model.getShowPasswordError().observe(getViewLifecycleOwner(), passwordObserver() );
+        model.getShowConfirmationPasswordError().observe(getViewLifecycleOwner(), confirmationPasswordObserver() );
         model.getSendRegistrationEmailEvent().observe(getViewLifecycleOwner(), emailRegistrationResponseObserver());
     }
 
@@ -52,6 +54,30 @@ private FragmentRegistrationBinding binding;
             }
             registrationEmailInput.setErrorEnabled(showEmailError);
             registrationEmailInput.setError(showEmailError ? getString(R.string.error_invalid_email): null);
+        };
+    }
+
+    public final Observer<Boolean> passwordObserver() {
+        TextInputLayout registrationPasswordInput = binding.password;
+        return showPasswordError -> {
+            Log.d("passwordError", showPasswordError.toString());
+            if(showPasswordError == registrationPasswordInput.isErrorEnabled()){
+                return;
+            }
+            registrationPasswordInput.setErrorEnabled(showPasswordError);
+            registrationPasswordInput.setError(showPasswordError ? getString(R.string.error_invalid_password): null);
+        };
+    }
+
+    public final Observer<Boolean> confirmationPasswordObserver() {
+        TextInputLayout registrationPasswordInput = binding.confirmedPassword;
+        return showConfirmationPasswordError -> {
+            Log.d("confirmPasswordError", showConfirmationPasswordError.toString());
+            if(showConfirmationPasswordError == registrationPasswordInput.isErrorEnabled()){
+                return;
+            }
+            registrationPasswordInput.setErrorEnabled(showConfirmationPasswordError);
+            registrationPasswordInput.setError(showConfirmationPasswordError ? getString(R.string.error_invalid_confirmation_password): null);
         };
     }
 

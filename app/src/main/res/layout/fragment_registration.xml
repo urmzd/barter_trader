@@ -23,7 +23,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.firstName}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,7 +40,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.lastName}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +75,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.password}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +92,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.confirmationPassword}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,10 +113,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/material_input_margin"
             android:text="@string/action_register"
+            android:enabled="@{viewModel.enabledRegistration}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:onClick="@{() -> viewModel.sendConfirmationEmail()}"
+            android:onClick="@{() -> viewModel.sendRegistrationEmailEvent()}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

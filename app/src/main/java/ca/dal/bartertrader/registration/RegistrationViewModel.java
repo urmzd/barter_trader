@@ -22,6 +22,12 @@ public class RegistrationViewModel extends ViewModel {
     }
 
     private final MutableLiveData<String> email = new MutableLiveData<>();
+    private final MutableLiveData<String> firstName = new MutableLiveData<>();
+    private final MutableLiveData<String> lastName = new MutableLiveData<>();
+    private final MutableLiveData<String> password = new MutableLiveData<>();
+    private final MutableLiveData<String> confirmationPassword = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> roleIsProvider = new MutableLiveData<>();
+
     private final LiveData<Boolean> showEmailError = Transformations.map(email, email ->
     {
         if (TextUtils.isEmpty(email) || email == null) {
@@ -29,42 +35,27 @@ public class RegistrationViewModel extends ViewModel {
         }
         return !isEmailValid(email);
     });
+
+    private final LiveData<Boolean> showPasswordError = Transformations.map(password, password ->
+    {
+        if (TextUtils.isEmpty(password) || password == null) {
+            return false;
+        }
+        return !isPasswordValid(password);
+    });
+
+    private final LiveData<Boolean> showConfirmationPasswordError = Transformations.map(confirmationPassword, confirmationPassword ->
+    {
+        if (TextUtils.isEmpty(confirmationPassword) || confirmationPassword == null) {
+            return false;
+        }
+        return !isConfirmationPasswordValid(confirmationPassword);
+    });
+
     private final MutableLiveData<SingleEvent<Boolean>> sendRegistrationEmailEvent = new MutableLiveData<>();
 
-    public void registerUser( String email, String username, String password ) {
-        boolean validRegistration = validateRegistration(email, username, password);
-
-        boolean registrationResult = false;
-        if (validRegistration)
-        {
-            //registrationResult = userRepository.registerAnonymously(email, username, password);
-        }
-        if (validRegistration && registrationResult)
-        {
-            // set live registration result callback to be a success
-            sendConfirmationEmail();
-        }
-        else
-        {
-            // fire back an error with registration.
-        }
-    }
-
-    public void registrationDataChanged(String email, String username, String password)
-    {
-        if (!isEmailValid(email))
-        {
-            /** set live data to notify an invalid email **/
-        }
-        else if (!isUserNameValid(username))
-        {
-            /** set live data to notify an invalid user **/
-        }
-        else if (!isPasswordValid(password))
-        {
-            /** set live data to notify an invalid password **/
-        }
-    }
+    private final LiveData<Boolean> enabledRegistration =
+            Transformations.map(email, this::isEmailValid);
 
     public void sendConfirmationEmail() {
         /**TODO: send email confirmation after a valid registration **/
@@ -95,9 +86,13 @@ public class RegistrationViewModel extends ViewModel {
 
     // Validates the password given for registration.
     private boolean isPasswordValid(String password) {
-        return !password.isEmpty();
+        return !password.isEmpty() && password.length() >= 6;
     };
 
+    private boolean isConfirmationPasswordValid(String confirmationPassword)
+    {
+        return !confirmationPassword.isEmpty();
+    }
     // Checks firebase to see if this email already belongs to a user.
     private boolean isEmailRegistered(String email) {
         boolean exists = true;
@@ -109,7 +104,31 @@ public class RegistrationViewModel extends ViewModel {
         return this.email;
     }
 
+    public MutableLiveData<String> getFirstName() {
+        return this.firstName;
+    }
+
+    public MutableLiveData<String> getLastName() {
+        return this.lastName;
+    }
+
+    public MutableLiveData<String> getPassword() {
+        return this.password;
+    }
+
+    public MutableLiveData<String> getConfirmationPassword() {
+        return confirmationPassword;
+    }
+
+    public MutableLiveData<Boolean> getRoleIsProvider() {
+        return this.roleIsProvider;
+    }
+
     public LiveData<Boolean> getShowEmailError() { return this.showEmailError; }
+    public LiveData<Boolean> getShowPasswordError() { return this.showPasswordError; }
+    public LiveData<Boolean> getShowConfirmationPasswordError() { return this.showConfirmationPasswordError; }
+
+    public LiveData<Boolean> getEnabledRegistration() { return this.enabledRegistration; }
 
     public LiveData<SingleEvent<Boolean>> getSendRegistrationEmailEvent() {
         return this.sendRegistrationEmailEvent;
@@ -119,6 +138,36 @@ public class RegistrationViewModel extends ViewModel {
     public void setEmail(TextInputLayout view, String currentEmail)
     {
         this.email.setValue(currentEmail);
+    }
+
+    @BindingAdapter("firstName")
+    public void setFirstName(TextInputLayout view, String firstName)
+    {
+        this.firstName.setValue(firstName);
+    }
+
+    @BindingAdapter("lastName")
+    public void setLastName(TextInputLayout view, String lastName)
+    {
+        this.lastName.setValue(lastName);
+    }
+
+    @BindingAdapter("password")
+    public void setPassword(TextInputLayout view, String password)
+    {
+        this.password.setValue(password);
+    }
+
+    @BindingAdapter("confirmationPassword")
+    public void setConfirmationPassword(TextInputLayout view, String confirmationPassword)
+    {
+        this.confirmationPassword.setValue(confirmationPassword);
+    }
+
+    @BindingAdapter("roleIsProvider")
+    public void setRoleIsProvider(TextInputLayout view, boolean roleIsProvider)
+    {
+        this.roleIsProvider.setValue(roleIsProvider);
     }
 
     public void sendRegistrationEmailEvent() {
