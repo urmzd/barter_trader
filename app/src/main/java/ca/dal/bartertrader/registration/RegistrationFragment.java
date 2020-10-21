@@ -85,7 +85,6 @@ private FragmentRegistrationBinding binding;
         return emailRegistrationEvent -> {
             Toast emailRegistrationNotification = Toast.makeText(getContext(), getString(R.string.registration_email_sent), Toast.LENGTH_SHORT);
             emailRegistrationNotification.show();
-            binding.email.getEditText().setText("");
         };
     }
 }

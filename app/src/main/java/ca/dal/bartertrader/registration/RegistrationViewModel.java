@@ -1,5 +1,6 @@
 package ca.dal.bartertrader.registration;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -9,16 +10,20 @@ import androidx.lifecycle.ViewModel;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
+import ca.dal.bartertrader.MainActivity;
 import ca.dal.bartertrader.SingleEvent;
-//private userRepository;
 
 
 public class RegistrationViewModel extends ViewModel {
-
+    private FirebaseAuth firebaseAuth;
     public RegistrationViewModel(/**UserRepository userRepository**/) {
-        /**this.userRepository = userRepository;**/
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     private final MutableLiveData<String> email = new MutableLiveData<>();
@@ -171,6 +176,13 @@ public class RegistrationViewModel extends ViewModel {
     }
 
     public void sendRegistrationEmailEvent() {
+        firebaseAuth.createUserWithEmailAndPassword(this.getEmail().getValue(), this.getPassword().getValue())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    }
+                });
         sendRegistrationEmailEvent.setValue(new SingleEvent<>(true));
     }
 }
