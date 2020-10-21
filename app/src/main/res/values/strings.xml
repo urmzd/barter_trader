@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">BarterTrader</string>
     <string name="title_first_name_placeholder">First Name</string>
+    <string name="error_invalid_email">Please ensure your email address follows the format: username@provider.domain</string>
     <string name="title_last_name_placeholder">Last Name</string>
     <string name="title_email_placeholder">Email</string>
     <string name="title_password_placeholder">Password</string>
     <string name="title_confirmed_password_placeholder">Confirmed Password</string>
     <string name="title_provider_label">Provider</string>
     <string name="action_register">Register!</string>
+    <string name="registration_email_sent"> A registration request to your email has been sent</string>
+
 </resources>

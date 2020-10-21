@@ -1,8 +1,15 @@
 package ca.dal.bartertrader.registration;
 
+import androidx.databinding.BindingAdapter;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+
+import android.text.TextUtils;
 import android.util.Patterns;
+
+import com.google.android.material.textfield.TextInputLayout;
 //private userRepository;
 
 
@@ -13,6 +20,13 @@ public class RegistrationViewModel extends ViewModel {
     }
 
     private final MutableLiveData<String> email = new MutableLiveData<>();
+    private final LiveData<Boolean> showEmailError = Transformations.map(email, email ->
+    {
+        if (TextUtils.isEmpty(email) || email == null) {
+            return false;
+        }
+        return !isEmailValid(email);
+    });
 
 
     public void registerUser( String email, String username, String password ) {
@@ -50,7 +64,7 @@ public class RegistrationViewModel extends ViewModel {
         }
     }
 
-    private void sendConfirmationEmail() {
+    public void sendConfirmationEmail() {
         /**TODO: send email confirmation after a valid registration **/
     };
 
@@ -87,5 +101,17 @@ public class RegistrationViewModel extends ViewModel {
         boolean exists = true;
         //exists = userRepository.emailExists(email);
         return exists;
+    }
+
+    public MutableLiveData<String> getEmail() {
+        return this.email;
+    }
+
+    public LiveData<Boolean> getShowEmailError() { return this.showEmailError; }
+
+    @BindingAdapter("email")
+    public void setEmail(TextInputLayout view, String currentEmail)
+    {
+        this.email.setValue(currentEmail);
     }
 }
