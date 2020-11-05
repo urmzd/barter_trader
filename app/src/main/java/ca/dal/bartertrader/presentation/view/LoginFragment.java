@@ -43,6 +43,10 @@ public class LoginFragment extends Fragment {
 //                Navigation.findNavController(getView())
 //                        .navigate(LoginFragmentDirections.);
             }
+            else if (destID == 2) {
+                NavHostFragment.findNavController(LoginFragment.this)
+                        .navigate(R.id.action_loginFragment_to_passwordResetFragment);
+            }
             else {
                 Toast.makeText(getContext(), "An error has occurred", Toast.LENGTH_LONG).show();
             }

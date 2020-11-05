@@ -92,7 +92,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/action_go_to_reset_password"
                 app:layout_constraintRight_toRightOf="@id/login_password"
-                app:layout_constraintTop_toBottomOf="@id/login_password" />
+                app:layout_constraintTop_toBottomOf="@id/login_password"
+                android:onClick="@{() -> model.navigate(2)}"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
