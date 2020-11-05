@@ -36,6 +36,35 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.getModel().getEmailIsInvalid().observe(getViewLifecycleOwner(), emailIsInvalid -> {
+            if (emailIsInvalid) {
+                binding.loginEmail.setError("Empty Email");
+            }
+            else {
+                binding.loginEmail.setError(null);
+            }
+        });
+
+        binding.getModel().getPasswordIsInvalid().observe(getViewLifecycleOwner(), passwordIsInvalid -> {
+            if (passwordIsInvalid) {
+                binding.loginPassword.setError("Empty Password");
+            }
+            else {
+                binding.loginPassword.setError(null);
+            }
+        });
+
+        binding.getModel().getUser().observe(getViewLifecycleOwner(), user -> {
+            if (user != null) {
+                Toast.makeText(getContext(), "Log in successful", Toast.LENGTH_LONG).show();
+                NavHostFragment.findNavController(LoginFragment.this)
+                        .navigate(R.id.action_loginFragment_to_splashFragment);
+            }
+            else {
+                Toast.makeText(getContext(), "Log in failed", Toast.LENGTH_LONG).show();
+            }
+        });
+
         binding.getModel().getDestID().observe(getViewLifecycleOwner(), destID -> {
             if (destID == 1) {
                 NavHostFragment.findNavController(LoginFragment.this)
