@@ -58,4 +58,24 @@ public class LoginFragmentInstrumentedTest {
                 .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void logInValidation() throws InterruptedException{
+        onView(withHint("Email"))
+                .perform(click())
+                .perform(typeText("poyowox421@ptcji.com"))
+                .perform(closeSoftKeyboard());
+
+        onView(withHint("Password"))
+                .perform(click())
+                .perform(typeText("Ab433-0317"))
+                .perform(closeSoftKeyboard());
+
+        onView(withText("LOG IN"))
+                .perform(click());
+
+        Thread.sleep(2000);
+        onView(withId(R.id.splash_fragment))
+                .check(matches(isDisplayed()));
+    }
+
 }
