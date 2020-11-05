@@ -49,4 +49,13 @@ public class LoginFragmentInstrumentedTest {
                 .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void navToPasswordReset() {
+        onView(withId(R.id.login_forgot_password))
+                .perform(click());
+
+        onView(withId(R.id.passwordReset_fragment))
+                .check(matches(isDisplayed()));
+    }
+
 }
