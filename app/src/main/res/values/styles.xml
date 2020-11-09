@@ -8,7 +8,13 @@
 
         <item name="colorSurface">@color/colorSurface</item>
 
-        <item name="colorError">@color/colorError</item>S
+        <item name="colorError">@color/colorError</item>
+
+        <item name="autoCompleteTextViewStyle">@style/SearchAutoCompleteTextView</item>
+    </style>
+
+    <style name="SearchAutoCompleteTextView" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
 </resources>
