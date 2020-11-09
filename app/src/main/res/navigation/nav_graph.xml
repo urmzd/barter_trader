@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/registrationFragment"
+    app:startDestination="@id/splashFragment"
     >
 
     <fragment
@@ -67,6 +67,21 @@
         <action
             android:id="@+id/action_providerHomeFragmentViewPost_to_providerHomeFragment"
             app:destination="@id/providerHomeFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string"/>
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="image"
+            app:argType="integer" />
     </dialog>
     <fragment
         android:id="@+id/startUpFragment"
