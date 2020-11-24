@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_providerHomeFragment_to_splashFragment"
             app:destination="@id/splashFragment" />
+        <action
+            android:id="@+id/action_providerHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/startUpFragment"
@@ -80,4 +83,8 @@
         android:name="ca.dal.bartertrader.presentation.view.provider_home.HandlePostFragment"
         android:label="@string/title_handle_post_fragment_label"
         tools:layout="@layout/fragment_handle_post" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ca.dal.bartertrader.presentation.view.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

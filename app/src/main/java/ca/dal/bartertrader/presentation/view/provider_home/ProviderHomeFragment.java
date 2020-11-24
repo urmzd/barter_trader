@@ -10,7 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
+import ca.dal.bartertrader.R;
 import ca.dal.bartertrader.databinding.FragmentProviderHomeBinding;
 import ca.dal.bartertrader.di.view_model.provider_home.ProviderHomeViewModelFactory;
 import ca.dal.bartertrader.presentation.view_model.provider_home.ProviderHomeViewModel;
@@ -40,6 +42,7 @@ public class ProviderHomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding.addPost.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(ProviderHomeFragmentDirections.actionProviderHomeFragmentToHandlePostFragment()));
+        binding.button2.setOnClickListener(v -> NavHostFragment.findNavController(ProviderHomeFragment.this).navigate(R.id.action_providerHomeFragment_to_profileFragment));
         binding.switchRole.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(ProviderHomeFragmentDirections.actionProviderHomeFragmentToSplashFragment()));
     }
 }
