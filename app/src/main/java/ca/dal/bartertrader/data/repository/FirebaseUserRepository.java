@@ -58,7 +58,7 @@ public class FirebaseUserRepository {
     }
 
     public Single<FirebaseUser> getUser() {
-        return null;
+        return Single.just(firebaseAuthDataSource.getUser());
     }
 
     public Completable sendPasswordReset(String email) {
