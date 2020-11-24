@@ -53,4 +53,28 @@ public class ProfileFragmentInstrumentedTest {
         onView(withId(R.id.profile_fragment_recyclerView_review))
                 .check(matches(isDisplayed()));
     }
+
+    @Test
+    public void displayName() throws InterruptedException {
+        onView(withHint("Email"))
+                .perform(click())
+                .perform(typeText("spyromagic10@gmail.com"))
+                .perform(closeSoftKeyboard());
+
+        onView(withHint("Password"))
+                .perform(click())
+                .perform(typeText("Ab4330317!"))
+                .perform(closeSoftKeyboard());
+
+        onView(withText("LOG IN"))
+                .perform(click());
+
+        Thread.sleep(1000);
+
+        onView(withText("PROFILE"))
+                .perform(click());
+
+        onView(withId(R.id.profile_fragment_text_username))
+                .check(matches(withText("Nicholas McPhee")));
+    }
 }
