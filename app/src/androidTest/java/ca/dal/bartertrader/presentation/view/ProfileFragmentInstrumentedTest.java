@@ -2,6 +2,7 @@ package ca.dal.bartertrader.presentation.view;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -24,8 +25,8 @@ public class ProfileFragmentInstrumentedTest {
     public ActivityScenarioRule<MainActivity> myRule
             = new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
-    public void profileLayout() throws InterruptedException{
+    @Before
+    public void setup() throws InterruptedException {
         onView(withHint("Email"))
                 .perform(click())
                 .perform(typeText("spyromagic10@gmail.com"))
@@ -43,7 +44,10 @@ public class ProfileFragmentInstrumentedTest {
 
         onView(withText("PROFILE"))
                 .perform(click());
+    }
 
+    @Test
+    public void profileLayout() {
         onView(withId(R.id.profile_fragment_text_username))
                 .check(matches(isDisplayed()));
 
@@ -55,25 +59,7 @@ public class ProfileFragmentInstrumentedTest {
     }
 
     @Test
-    public void displayName() throws InterruptedException {
-        onView(withHint("Email"))
-                .perform(click())
-                .perform(typeText("spyromagic10@gmail.com"))
-                .perform(closeSoftKeyboard());
-
-        onView(withHint("Password"))
-                .perform(click())
-                .perform(typeText("Ab4330317!"))
-                .perform(closeSoftKeyboard());
-
-        onView(withText("LOG IN"))
-                .perform(click());
-
-        Thread.sleep(1000);
-
-        onView(withText("PROFILE"))
-                .perform(click());
-
+    public void displayName() {
         onView(withId(R.id.profile_fragment_text_username))
                 .check(matches(withText("Nicholas McPhee")));
     }
