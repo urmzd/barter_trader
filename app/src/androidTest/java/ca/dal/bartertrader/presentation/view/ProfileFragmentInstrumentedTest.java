@@ -63,4 +63,10 @@ public class ProfileFragmentInstrumentedTest {
         onView(withId(R.id.profile_fragment_text_username))
                 .check(matches(withText("Nicholas McPhee")));
     }
+
+    @Test
+    public void displayJoinDate() {
+        onView(withId(R.id.profile_fragment_text_joinDate))
+                .check(matches(withText("Mon Nov 23 20:55:34 AST 2020")));
+    }
 }
