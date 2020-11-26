@@ -67,6 +67,6 @@ public class ProfileFragmentInstrumentedTest {
     @Test
     public void displayJoinDate() {
         onView(withId(R.id.profile_fragment_text_joinDate))
-                .check(matches(withText("Mon Nov 23 20:55:34 AST 2020")));
+                .check(matches(withText("Mon Nov 23 20:55:35 AST 2020")));
     }
 }

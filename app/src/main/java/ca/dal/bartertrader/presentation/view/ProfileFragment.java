@@ -1,6 +1,7 @@
 package ca.dal.bartertrader.presentation.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import java.util.Date;
 
 import ca.dal.bartertrader.R;
 import ca.dal.bartertrader.data.data_source.FirebaseAuthDataSource;
@@ -25,6 +34,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseFirestoreDataSource firestoreDataSource;
     private FirebaseUserRepository userRepository;
     private TextView displayName;
+    private TextView dateJoined;
 
     @Override
     public View onCreateView(
@@ -44,8 +54,17 @@ public class ProfileFragment extends Fragment {
         userRepository = new FirebaseUserRepository(authDataSource, firestoreDataSource);
 
         displayName = getView().findViewById(R.id.profile_fragment_text_username);
+        dateJoined = getView().findViewById(R.id.profile_fragment_text_joinDate);
 
         FirebaseUser user = userRepository.getUser();
-        displayName.setText(user.getDisplayName());
+
+        if (user != null) {
+            displayName.setText(user.getDisplayName());
+            long timestamp = user.getMetadata().getCreationTimestamp();
+            Date d = new Date(timestamp);
+            Log.d("DATE", d.toString());
+            dateJoined.setText(d.toString());
+        }
     }
 }
+
