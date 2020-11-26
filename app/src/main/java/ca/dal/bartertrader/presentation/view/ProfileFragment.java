@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment {
 
         displayName = getView().findViewById(R.id.profile_fragment_text_username);
 
-        FirebaseUser user = userRepository.getUser().blockingGet();
+        FirebaseUser user = userRepository.getUser();
         displayName.setText(user.getDisplayName());
     }
 }

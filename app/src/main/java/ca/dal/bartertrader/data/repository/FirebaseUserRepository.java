@@ -57,8 +57,8 @@ public class FirebaseUserRepository {
         return firebaseAuthDataSource.fetchSignInMethodsForEmail(email).subscribeOn(Schedulers.io());
     }
 
-    public Single<FirebaseUser> getUser() {
-        return Single.just(firebaseAuthDataSource.getUser());
+    public FirebaseUser getUser() {
+        return firebaseAuthDataSource.getUser();
     }
 
     public Completable sendPasswordReset(String email) {
