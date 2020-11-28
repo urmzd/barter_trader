@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -35,6 +38,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseUserRepository userRepository;
     private TextView displayName;
     private TextView dateJoined;
+    private ReviewAdapter adapter;
 
     @Override
     public View onCreateView(
@@ -65,6 +69,36 @@ public class ProfileFragment extends Fragment {
             Log.d("DATE", d.toString());
             dateJoined.setText(d.toString());
         }
+
+        String uid = user.getUid();
+
+        Query query = mFirestore.collection("reviews")
+                .document("4EpZapNpZM66OvBRMkbF")
+                .collection(uid)
+                .orderBy("datePosted");
+
+        FirestoreRecyclerOptions<Review> options = new
+                FirestoreRecyclerOptions.Builder<Review>()
+                .setQuery(query, Review.class)
+                .build();
+
+        adapter = new ReviewAdapter(options);
+
+        RecyclerView recyclerView = getView().findViewById(R.id.profile_fragment_recyclerView_review);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
 
