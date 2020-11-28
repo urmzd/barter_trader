@@ -1,4 +1,4 @@
-package ca.dal.bartertrader.presentation.view;
+package ca.dal.bartertrader.presentation.view.profile;
 
 import com.google.firebase.firestore.ServerTimestamp;
 

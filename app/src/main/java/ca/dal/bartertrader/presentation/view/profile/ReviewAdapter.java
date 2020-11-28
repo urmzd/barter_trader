@@ -1,4 +1,4 @@
-package ca.dal.bartertrader.presentation.view;
+package ca.dal.bartertrader.presentation.view.profile;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

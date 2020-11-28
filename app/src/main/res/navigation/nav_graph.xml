@@ -85,6 +85,6 @@
         tools:layout="@layout/fragment_handle_post" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ca.dal.bartertrader.presentation.view.ProfileFragment"
+        android:name="ca.dal.bartertrader.presentation.view.profile.ProfileFragment"
         android:label="ProfileFragment" />
 </navigation>
