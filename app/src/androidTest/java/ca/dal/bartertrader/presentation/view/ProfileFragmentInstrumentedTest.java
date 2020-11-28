@@ -1,5 +1,6 @@
 package ca.dal.bartertrader.presentation.view;
 
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import org.junit.Before;
@@ -9,11 +10,13 @@ import org.junit.Test;
 import ca.dal.bartertrader.MainActivity;
 import ca.dal.bartertrader.R;
 
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -68,5 +71,17 @@ public class ProfileFragmentInstrumentedTest {
     public void displayJoinDate() {
         onView(withId(R.id.profile_fragment_text_joinDate))
                 .check(matches(withText("Mon Nov 23 20:55:35 AST 2020")));
+    }
+
+    @Test
+    public void recyclerReviewDisplay() {
+        onView(withId(R.id.profile_fragment_recyclerView_review))
+                .perform(RecyclerViewActions.scrollTo(hasDescendant(withText("Bill Luigi"))));
+
+        onView(withId(R.id.profile_fragment_recyclerView_review))
+                .perform(RecyclerViewActions.scrollTo(hasDescendant(withText("Henry Willson"))));
+
+        onView(withId(R.id.profile_fragment_recyclerView_review))
+                .perform(RecyclerViewActions.scrollTo(hasDescendant(withText("Jacob Coyle"))));
     }
 }
