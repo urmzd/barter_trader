@@ -150,6 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_electronics)}"
                 android:text="@string/chip_category_electronics"/>
 
             <com.google.android.material.chip.Chip
@@ -158,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_clothing)}"
                 android:text="@string/chip_category_clothing"/>
 
             <com.google.android.material.chip.Chip
@@ -166,6 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_furniture)}"
                 android:text="@string/chip_category_furniture"/>
 
             <com.google.android.material.chip.Chip
@@ -174,6 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_books)}"
                 android:text="@string/chip_category_books"/>
 
             <com.google.android.material.chip.Chip
@@ -182,6 +186,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_sporting_goods)}"
                 android:text="@string/chip_category_sporting_goods"/>
 
             <com.google.android.material.chip.Chip
@@ -190,6 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_tools)}"
                 android:text="@string/chip_category_tools"/>
 
             <com.google.android.material.chip.Chip
@@ -198,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_hobbies_and_crafts)}"
                 android:text="@string/chip_category_hobbies_and_crafts"/>
 
             <com.google.android.material.chip.Chip
@@ -206,6 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="@{() -> ViewModel.setCategory(@string/chip_category_misc)}"
                 android:text="@string/chip_category_misc"/>
 
         </com.google.android.material.chip.ChipGroup>

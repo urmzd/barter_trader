@@ -9,6 +9,8 @@ import com.google.firebase.firestore.ServerTimestamp;
 
 import java.io.Serializable;
 
+import ca.dal.bartertrader.utils.CategoryEnum;
+
 @IgnoreExtraProperties
 public class PostModel implements Serializable {
 
@@ -17,6 +19,7 @@ public class PostModel implements Serializable {
     private String title;
     private String description;
     private String imageName;
+    private CategoryEnum category;
 
     private String postId;
 
@@ -39,12 +42,13 @@ public class PostModel implements Serializable {
 
     }
 
-    public PostModel(Uri image, String title, String description, double lat, double lon) {
+    public PostModel(Uri image, String title, String description, double lat, double lon, CategoryEnum category) {
         this.image = image;
         this.title = title;
         this.description = description;
         this.lat = lat;
         this.lon = lon;
+        this.category = category;
         this.timestamp = null;
         this.authUid = null;
     }
@@ -89,6 +93,8 @@ public class PostModel implements Serializable {
     public String getAuthUid() {
         return authUid;
     }
+
+    public CategoryEnum getCategory() { return category; }
 
     public void setAuthUid(String authUid) {
         this.authUid = authUid;

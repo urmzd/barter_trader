@@ -64,7 +64,18 @@ public class HandlePostFragment extends Fragment {
         double lon = getArguments().getDouble("lon");
         String postUid = getArguments().getString("postUid");
 
-        viewModel.setExistingPostData(title, description, imageUri, lat, lon);
+        if (postUid != null)
+        {
+            viewModel.setExistingPostData(title, description, imageUri, lat, lon);
+        }
+        else
+        {
+            LocationServiceManager lsm = LocationServiceManager.getInstance();
+            if (lsm !=null )
+            {
+                viewModel.setLocation(lsm.getCityFromCurrentLocation(), lsm.getProvinceFromCurrentLocation());
+            }
+        }
 
         return binding.getRoot();
     }
@@ -110,13 +121,6 @@ public class HandlePostFragment extends Fragment {
             }
 
         });
-
-        LocationServiceManager locMan = LocationServiceManager.getInstance();
-        if ( locMan != null)
-        {
-            double lat = locMan.getCurrentLat();
-            double lon = locMan.getCurrentLon();
-        }
     }
 
     private final ActivityResultLauncher<Uri> takePicture = registerForActivityResult(new ActivityResultContracts.TakePicture(), pictureTaken -> {

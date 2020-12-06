@@ -7,6 +7,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +17,8 @@ import java.util.Objects;
 
 import ca.dal.bartertrader.domain.model.PostModel;
 import ca.dal.bartertrader.domain.use_case.posts.SetPostUseCase;
+import ca.dal.bartertrader.utils.CategoryEnum;
+import ca.dal.bartertrader.utils.CategoryHelper;
 import ca.dal.bartertrader.utils.FormValidatorTools;
 import ca.dal.bartertrader.utils.LocationServiceManager;
 import ca.dal.bartertrader.utils.functionals.Transformers;
@@ -32,6 +37,7 @@ public class HandlePostViewModel extends ViewModel {
     private String postUid;
     private double lat;
     private double lon;
+    private CategoryEnum category = CategoryEnum.MISC;
 
     public HandlePostViewModel(SetPostUseCase setPostUseCase) {
         this.setPostUseCase = setPostUseCase;
@@ -55,6 +61,11 @@ public class HandlePostViewModel extends ViewModel {
 
     private final LiveData<Status> postStatus = Transformations.map(postResults, Resource::getStatus);
 
+    public void setCategory(String categoryString)
+    {
+        category = CategoryHelper.StringToCategory(categoryString);
+    }
+
     public void setImage(Uri imageUri) {
         image.setValue(imageUri);
     }
@@ -71,7 +82,7 @@ public class HandlePostViewModel extends ViewModel {
     }
 
     public void updatePost() {
-        PostModel newPostModel = new PostModel(image.getValue(), title.getValue(), description.getValue(), lat, lon);
+        PostModel newPostModel = new PostModel(image.getValue(), title.getValue(), description.getValue(), lat, lon, category);
         disposables.add(
                 setPostUseCase.execute(newPostModel)
                         .observeOn(AndroidSchedulers.mainThread())
